@@ -1,4 +1,4 @@
-import {INode} from '../domain/model'
+import { INode } from '../domain/model'
 export const testModel: INode[] = [
     {
         description: "I can't display a sign",
@@ -9,7 +9,7 @@ export const testModel: INode[] = [
     {
         description: "I can display a sign",
         isRootNode: false,
-        name: 'outcome-can-display-sign',
+        name: 'outcome-can-display',
         type: 'outcome',
     },
     {
