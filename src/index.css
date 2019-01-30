@@ -92,7 +92,7 @@ a.active {
 }
 
 .error {
-  background-color: #FC3C3C;
+  background-color: var(--error);
   border-radius: 3px;
   display: block;
 }

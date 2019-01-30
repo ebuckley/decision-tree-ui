@@ -38,13 +38,15 @@ class App extends React.Component<any, IAppState, any> {
     const viewNode = (params: RouteComponentProps) => {
       // ts = crazy :\
       const param = (params.match.params as any).nodename
-      console.log('finding', param, this.state.nodes, findNode(this.state.nodes, param))
       return (<NodeView context={this.state.nodes} node={findNode(this.state.nodes, param)} />)
     }
 
     const renderJson = (params: RouteComponentProps) => (<pre>{JSON.stringify(params.match, null, '  ')}</pre>)
     const renderTree = () => (<TreeView context={this.state.nodes} />)
-    const editTree = () => (<TreeEdit context={this.state.nodes} />)
+    const editTree = () => {
+      const hte = (c: INode[]) => this.handleTreeEdit(c);
+      return <TreeEdit onSave={hte} context={this.state.nodes} />
+    }
 
     return (
       <Router>
@@ -62,6 +64,9 @@ class App extends React.Component<any, IAppState, any> {
         </div>
       </Router>
     );
+  }
+  public handleTreeEdit(context: INode[]) {
+    this.setState({ nodes: context })
   }
 }
 

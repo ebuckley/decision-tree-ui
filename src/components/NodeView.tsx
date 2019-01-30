@@ -8,7 +8,7 @@ export interface INodeViewParams {
 }
 
 function RenderOutcome(outcome: IOption): JSX.Element {
-    return (<Link key="" to={`/n/${outcome.name}`}>
+    return (<Link key={outcome.name} to={`/n/${outcome.name}`}>
         <button>
             {outcome.label}
         </button>

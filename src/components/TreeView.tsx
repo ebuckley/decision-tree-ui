@@ -22,7 +22,9 @@ export default function TreeView(props: ITreeViewParams): JSX.Element {
     return (<div className="tile">
         <h1>Tree View</h1>
         <table>
-            {props.context.map(RenderNode)}
+            <tbody>
+                {props.context.map(RenderNode)}
+            </tbody>
         </table>
         <Link to="/tree/edit">
             <button>
