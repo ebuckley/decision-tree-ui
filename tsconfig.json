@@ -23,6 +23,7 @@
     "noUnusedLocals": true,
   },
   "exclude": [
+    "d3",
     "node_modules",
     "build",
     "scripts",

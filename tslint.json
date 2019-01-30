@@ -6,7 +6,8 @@
   ],
   "rules": {
     "no-console": false,
-    "no-debugger": false
+    "no-debugger": false,
+    "no-string-literal": false
   },
   "linterOptions": {
     "exclude": [
