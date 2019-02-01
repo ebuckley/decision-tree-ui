@@ -1,26 +1,25 @@
 import * as React from 'react';
+import { createGraphModelFromDecisionTree } from 'src/domain/factories';
+import { RootQuestion } from 'src/domain/model';
 import { graph } from './d3_tree';
 import './graph.css';
 
 const width = 960;
 
-class DecisionTree extends React.Component<any, any, any> {
+interface IDecisionTreeProps {
+    tree: RootQuestion;
+}
+class DecisionTree extends React.Component<IDecisionTreeProps, any, any> {
     public visRef: React.RefObject<SVGSVGElement>;
 
     constructor(props: any) {
         super(props)
         this.visRef = React.createRef<SVGSVGElement>();
     }
+
     public componentDidMount() {
-        console.log('mounting d3 visualization')
+        const data = createGraphModelFromDecisionTree(this.props.tree)
         if (this.visRef.current) {
-            const data = {
-                children: [
-                    { name: 'alpha' },
-                    { name: 'beta' }
-                ],
-                name: 'nullGraph',
-            }
             graph(width, this.visRef.current, data);
         } else {
             console.error('Reference to html element was not found!')

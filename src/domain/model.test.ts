@@ -20,10 +20,12 @@ const testSet = [
             {
                 label: 'NO',
                 name: 'outcome-can-not-display',
+                node: undefined
             },
             {
                 label: 'YES',
                 name: 'outcome-can-display',
+                node: undefined
             }
         ],
         type: 'question'

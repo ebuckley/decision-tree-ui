@@ -66,6 +66,7 @@ class App extends React.Component<any, IAppState, any> {
     );
   }
   public handleTreeEdit(context: INode[]) {
+    console.log('update nodes context')
     this.setState({ nodes: context })
   }
 }

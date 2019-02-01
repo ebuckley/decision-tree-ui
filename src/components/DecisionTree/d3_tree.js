@@ -1,17 +1,19 @@
 import * as d3 from 'd3';
+import { INode } from 'src/domain/model';
 
 
 const tree = (width, data) => {
     const root = d3.hierarchy(data)
-    root.dx = 10;
+    root.dx = 30;
     root.dy = width / (root.height + 1);
     return d3.tree().nodeSize([root.dx, root.dy])(root);
 }
 
+
 export function graph(width, ref, data) {
 
     const root = tree(width, data);
-
+    //find the leftmost and rightmost point
     let x0 = Infinity;
     let x1 = -x0;
     root.each(d => {

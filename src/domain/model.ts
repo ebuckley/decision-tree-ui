@@ -1,11 +1,12 @@
 // tslint:disable:max-classes-per-file
+
 export class INode {
     public name: string;
     public description: string;
     public type: string;
     public isRootNode: boolean;
     public outcomes?: IOption[];
-    constructor (context: any) {
+    constructor(context: any) {
         Object.assign(this, context);
     }
 }
@@ -25,7 +26,7 @@ export class Outcome extends INode {
     public type = 'outcome';
 }
 
-export  class RootQuestion extends INode {
+export class RootQuestion extends INode {
     public name: string;
     public description: string;
     public isRootNode = true;
@@ -36,4 +37,5 @@ export  class RootQuestion extends INode {
 export interface IOption {
     name: string;
     label: string;
+    node?: INode;
 } 

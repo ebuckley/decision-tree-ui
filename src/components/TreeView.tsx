@@ -1,5 +1,6 @@
 import * as React from 'react';
 import { Link } from 'react-router-dom';
+import { createTreeFromNodes } from 'src/domain/factories';
 import { INode } from 'src/domain/model';
 import DecisionTree from './DecisionTree/DecisionTree';
 
@@ -20,9 +21,13 @@ function RenderNode(n: INode): JSX.Element {
 }
 
 export default function TreeView(props: ITreeViewParams): JSX.Element {
-    return (<div>
+    let decisionTreePlaceholder = (<div>Loading Tree...</div>)
+    if (props.context.length) {
+        decisionTreePlaceholder = <DecisionTree tree={createTreeFromNodes(props.context)} />
+    }
 
-        <DecisionTree />
+    return (<div>
+        {decisionTreePlaceholder}
         <div className="tile">
             <h1>Tree View</h1>
             <table>
