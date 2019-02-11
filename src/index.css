@@ -113,3 +113,9 @@ textarea {
   padding: 10px;
   border: 1px dashed solid var(--dark);
 }
+
+.graph-view-container {
+  width: 100%;
+  height: calc(100vh - 95px);
+  display: block;
+}

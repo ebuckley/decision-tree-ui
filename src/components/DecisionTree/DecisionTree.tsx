@@ -3,7 +3,6 @@ import { createGraphModelFromDecisionTree } from 'src/domain/factories';
 import { RootQuestion } from 'src/domain/model';
 import { graph } from './d3_tree';
 import './graph.css';
-
 const width = 960;
 
 interface IDecisionTreeProps {

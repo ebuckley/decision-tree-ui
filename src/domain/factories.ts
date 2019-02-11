@@ -72,3 +72,28 @@ export function createGraphModelFromDecisionTree(node: RootQuestion | undefined)
         }
     }
 }
+
+
+export function createCytoGraphElementsFromNodes(context: INode[]): any {
+    // get all node data
+    const nodes: any[] = [];
+    let edges: any[] = []
+    context.forEach(n => {
+        nodes.push({ data: { id: n.name, node: n } })
+        if (n.outcomes && n.outcomes.length) {
+            const nodeEdges = n.outcomes.map(o => {
+                const edgeName = n.name + '->' + o.name
+                return {
+                    data: {
+                        id: edgeName,
+                        option: o,
+                        source: n.name,
+                        target: o.name,
+                    }
+                }
+            })
+            edges = edges.concat(nodeEdges)
+        }
+    })
+    return nodes.concat(edges);
+}

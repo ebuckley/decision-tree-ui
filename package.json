@@ -5,6 +5,7 @@
   "dependencies": {
     "@types/react-router-dom": "^4.3.1",
     "cytoscape": "^3.4.0",
+    "cytoscape-dagre": "^2.2.2",
     "d3": "^5.8.0",
     "firebase": "^5.8.2",
     "react": "^16.7.0",

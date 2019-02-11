@@ -13,12 +13,6 @@ export const testModel: INode[] = [
         type: 'outcome',
     },
     {
-        description: "You will need to apply for a permit to display this sign",
-        isRootNode: false,
-        name: 'outcome-must-apply-for-permit',
-        type: 'outcome',
-    },
-    {
         description: "You must not display the sign",
         isRootNode: false,
         name: 'outcome-can-not-display-sign',
@@ -236,11 +230,11 @@ export const testModel: INode[] = [
     {
         description: `Is the sign on a trailer, and detached from a vehicle?`,
         isRootNode: false,
-        name: 'is-sign-close-to-intersection',
+        name: 'is-sign-on-trailer',
         outcomes: [
             {
                 label: 'NO',
-                name: 'outcome-can-display-sign'
+                name: 'outcome-can-display'
             },
             {
                 label: 'YES',
@@ -256,7 +250,7 @@ export const testModel: INode[] = [
         outcomes: [
             {
                 label: 'NO',
-                name: 'outcome-can-display-sign'
+                name: 'outcome-can-display'
             },
             {
                 label: 'YES',
