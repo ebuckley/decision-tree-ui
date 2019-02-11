@@ -17,7 +17,9 @@ function RenderOutcome(outcome: IOption): JSX.Element {
 export function NodeContent(params: { node: INode }): JSX.Element {
     return (<div key={params.node.name} className="tile">
         <h3>{params.node.name}</h3>
-        {params.node.description}
+        <p>
+            {params.node.description}
+        </p>
 
         <div className="tile__actions">
             {params.node.outcomes ? params.node.outcomes.map(RenderOutcome) : <span />}

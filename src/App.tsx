@@ -1,27 +1,17 @@
+import {initializeApp } from 'firebase'
 import * as React from 'react';
 import { BrowserRouter as Router, Link, Route, RouteComponentProps } from 'react-router-dom';
 import './App.css';
+import Home from './components/Home'
 import NodeView from './components/NodeView';
 import TreeEdit from './components/TreeEdit';
 import TreeView from './components/TreeView';
-import { findNode } from './domain/factories';
+import config from './config';
+import { findNode } from './domain/factories'; 
 import { INode } from './domain/model';
 import { testModel } from './services/util';
 
-const Home = () => {
-  return (<div className="tile">
-    <h1> Test Digital bylaws here. </h1>
-    <Link to="/tree/edit">
-      <button>
-        EDIT TREE
-      </button>
-    </Link>
-    <button>
-      START
-  </button>
-  </div>)
-}
-
+initializeApp(config.firebase);
 interface IAppState {
   nodes: INode[]
 }
