@@ -1,4 +1,4 @@
-import {initializeApp } from 'firebase'
+import { initializeApp } from 'firebase'
 import * as React from 'react';
 import { BrowserRouter as Router, Link, Route, RouteComponentProps } from 'react-router-dom';
 import './App.css';
@@ -7,13 +7,16 @@ import NodeView from './components/NodeView';
 import TreeEdit from './components/TreeEdit';
 import TreeView from './components/TreeView';
 import config from './config';
-import { findNode } from './domain/factories'; 
+import { findNode } from './domain/factories';
 import { INode } from './domain/model';
 import { testModel } from './services/util';
 
 initializeApp(config.firebase);
 interface IAppState {
   nodes: INode[]
+}
+function NodeMissing() {
+  return (<div>Uh oh! this node has gone missing..</div>)
 }
 class App extends React.Component<any, IAppState, any> {
   public state = {
@@ -26,9 +29,13 @@ class App extends React.Component<any, IAppState, any> {
 
   public render() {
     const viewNode = (params: RouteComponentProps) => {
-      // ts = crazy :\
       const param = (params.match.params as any).nodename
-      return (<NodeView context={this.state.nodes} node={findNode(this.state.nodes, param)} />)
+      const nodeModel = findNode(this.state.nodes, param)
+      if (nodeModel) {
+        return (<NodeView context={this.state.nodes} node={nodeModel} />)
+      } else {
+        return <NodeMissing />
+      }
     }
 
     const renderJson = (params: RouteComponentProps) => (<pre>{JSON.stringify(params.match, null, '  ')}</pre>)

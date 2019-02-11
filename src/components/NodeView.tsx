@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import { INode, IOption } from 'src/domain/model';
 
 export interface INodeViewParams {
-    node: INode | undefined
+    node: INode
     context: INode[]
 }
 
@@ -27,17 +27,10 @@ export function NodeContent(params: { node: INode }): JSX.Element {
     </div>)
 }
 
-function Loading() {
-    return (<div className="loading" />)
-}
 class NodeView extends React.Component<INodeViewParams, any, any> {
 
     public render() {
-        if (!this.props.node) {
-            return <Loading />
-        } else {
-            return <NodeContent node={this.props.node} />
-        }
+        return <NodeContent node={this.props.node} />
     }
 }
 
