@@ -1,6 +1,6 @@
 import { initializeApp } from 'firebase'
 import * as React from 'react';
-import { BrowserRouter as Router, Link, Route, RouteComponentProps } from 'react-router-dom';
+import { BrowserRouter as Router, NavLink, Route, RouteComponentProps } from 'react-router-dom';
 import './App.css';
 import Home from './components/Home'
 import NodeView from './components/NodeView';
@@ -49,8 +49,8 @@ class App extends React.Component<any, IAppState, any> {
       <Router>
         <div>
           <nav>
-            <Link to="/">Home</Link>
-            <Link to="/tree">Tree View</Link>
+            <NavLink exact={true} to="/">Home</NavLink>
+            <NavLink to="/tree">Tree View</NavLink>
           </nav>
           <Route path="/" render={Home} exact={true} />
 

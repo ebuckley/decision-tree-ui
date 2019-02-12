@@ -6,11 +6,14 @@ const cytoscape: any = require('cytoscape');
 const dagre: any = require('cytoscape-dagre');
 
 interface IGraphProps {
+    activeNode?: INode,
     tree: INode[]
+    onNodeClick: (n?: INode) => any;
 }
 
 export default class GraphView extends React.Component<IGraphProps, any> {
     public visRef: React.RefObject<HTMLDivElement>
+    private cy: any; // reference to a cytoscape graph
     constructor(props: any) {
         super(props)
         this.visRef = React.createRef<HTMLDivElement>();
@@ -19,7 +22,7 @@ export default class GraphView extends React.Component<IGraphProps, any> {
         if (this.visRef.current) {
             const elements = createCytoGraphElementsFromNodes(this.props.tree)
             cytoscape.use(dagre);
-            const cy = cytoscape({
+            this.cy = cytoscape({
                 container: this.visRef.current,
                 elements,
 
@@ -49,6 +52,12 @@ export default class GraphView extends React.Component<IGraphProps, any> {
                             'target-arrow-shape': 'triangle',
                             'width': 3
                         }
+                    },
+                    {
+                        selector: 'node:selected',
+                        style: {
+                            'background-color': '#FC3C3C'
+                        }
                     }
                 ],
 
@@ -60,17 +69,29 @@ export default class GraphView extends React.Component<IGraphProps, any> {
                 maxZoom: 2,
                 minZoom: 0.11,
             })
-            cy.on('tap', e => {
-                if (e.target === cy) {
+            this.cy.on('tap', e => {
+                if (e.target === this.cy) {
                     console.log('tap on background', e.target);
+                    this.props.onNodeClick();
                 } else {
                     console.log('tap on some element', e.target.data());
+                    this.props.onNodeClick(e.target.data('node'))
                 }
             })
         } else {
             console.error('mounted component, but the dom reference for the graph does not exist yet!?')
         }
     }
+
+    public componentWillReceiveProps(nextProps: IGraphProps) {
+        if (!this.props.activeNode && !nextProps.activeNode) {
+            return
+        }
+        if (nextProps.activeNode) {
+            console.log('transition to a new node!', nextProps.activeNode)
+        }
+    }
+
     public render() {
         return (<div
             className='graph-view-container'

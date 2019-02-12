@@ -118,4 +118,27 @@ textarea {
   width: 100%;
   height: calc(100vh - 95px);
   display: block;
+  z-index: 50;
+}
+
+.anchor-top-right {
+  position: absolute;
+  right: 0;
+  width: 200px;
+  top: 0;
+}
+
+.graph-information {
+  background: white;
+  font-size: 0.8rem;
+  line-height: 0.9rem;
+  z-index: 100;
+}
+.graph-node-dialog {
+  background: white;
+  z-index: 100;
+  position: absolute;
+  left: 0;
+  top: 95px;
+  width: 400px;
 }

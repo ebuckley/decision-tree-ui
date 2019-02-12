@@ -21,6 +21,11 @@ export default function Home() {
                         EDIT TREE
                 </button>
                 </Link>
+                <Link to="/tree">
+                    <button>
+                        VIEW TREE
+                </button>
+                </Link>
                 <Link to="/n/is-sign-publically-visible">
                     <button onClick={onStart}>
                         START
