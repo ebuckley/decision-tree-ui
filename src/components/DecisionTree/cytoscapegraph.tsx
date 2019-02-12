@@ -84,11 +84,29 @@ export default class GraphView extends React.Component<IGraphProps, any> {
     }
 
     public componentWillReceiveProps(nextProps: IGraphProps) {
-        if (!this.props.activeNode && !nextProps.activeNode) {
-            return
-        }
         if (nextProps.activeNode) {
+            const newActiveNode = nextProps.activeNode
             console.log('transition to a new node!', nextProps.activeNode)
+            const eles = this.cy.elements()
+            eles.unselect()
+            eles.forEach(ele => {
+                // find node in graph
+                const id = ele.data('id');
+                if (id === newActiveNode.name) {
+                    console.log('selecting node!')
+                    this.cy.animate({
+                        fit: {
+                            eles: ele,
+                            padding: 300
+                        }
+                    }, {
+                            duration: 300
+                        })
+                    this.cy.center(ele)
+                    return false
+                }
+                return true;
+            })
         }
     }
 
