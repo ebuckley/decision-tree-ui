@@ -1,4 +1,4 @@
-import { initializeApp } from 'firebase'
+import * as firebase from 'firebase'
 import * as React from 'react';
 import { BrowserRouter as Router, NavLink, Route, RouteComponentProps } from 'react-router-dom';
 import './App.css';
@@ -11,23 +11,46 @@ import { findNode } from './domain/factories';
 import { INode } from './domain/model';
 import { testModel } from './services/util';
 
-initializeApp(config.firebase);
+firebase.initializeApp(config.firebase);
 interface IAppState {
-  nodes: INode[]
+  nodes: INode[],
+  user?: firebase.User
 }
 function NodeMissing() {
   return (<div>Uh oh! this node has gone missing..</div>)
 }
+function RegistrationFlow() {
+  return (<div>
+    
+    Log in or register
+  </div>)
+}
+
 class App extends React.Component<any, IAppState, any> {
   public state = {
-    nodes: []
+    nodes: [],
+    user: undefined,
   }
 
   public componentDidMount() {
+    // Are you authenticated?
+    // do you have a user profile model?
+    // if not: then show registration flow
+    firebase.auth().onAuthStateChanged(state => {
+      debugger
+      if (state) {
+        this.setState({ user: state })
+      } else {
+        this.setState({ user: undefined })
+      }
+    })
     this.setState({ nodes: testModel })
   }
 
   public render() {
+    if (!this.state.user) {
+      return (<RegistrationFlow/>)
+    }
     const viewNode = (params: RouteComponentProps) => {
       const param = (params.match.params as any).nodename
       const nodeModel = findNode(this.state.nodes, param)

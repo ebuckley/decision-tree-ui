@@ -58,6 +58,12 @@ export default class GraphView extends React.Component<IGraphProps, any> {
                         style: {
                             'background-color': '#FC3C3C'
                         }
+                    },
+                    {
+                        selector: 'node:visited',
+                        style: {
+                            'background-color': '#FC3C3C'
+                        }
                     }
                 ],
 
@@ -103,7 +109,7 @@ export default class GraphView extends React.Component<IGraphProps, any> {
                     }, {
                             duration: 300
                         })
-                    this.cy.center(ele)
+                    ele.classes('visited')
                     return false
                 }
                 return true;
