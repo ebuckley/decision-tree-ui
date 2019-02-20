@@ -63,8 +63,9 @@ export default class GraphView extends React.Component<IGraphProps, any> {
 
                 layout: {
                     name: 'dagre',
+                    nodeSep: 60,
                     rankDir: 'LR',
-                    rankSep: 512,
+                    spacingFactor: 2.5,
                 },
                 maxZoom: 2,
                 minZoom: 0.11,
