@@ -93,6 +93,22 @@ export const testModel: INode[] = [
             },
             {
                 label: 'YES',
+                name: 'is-sign-permited-by-consent'
+            }
+        ],
+        type: 'question',
+    },
+    {
+        description: 'Is the sign permitted by resource or building consent?',
+        isRootNode: false,
+        name: 'is-sign-permited-by-consent',
+        outcomes: [
+            {
+                label: 'YES',
+                name: 'outcome-can-display'
+            },
+            {
+                label: 'NO',
                 name: 'outcome-can-not-display-sign'
             }
         ],
