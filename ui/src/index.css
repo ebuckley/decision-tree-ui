@@ -1,0 +1,144 @@
+:root {
+  --bg: #FFF4E0;
+  --dark: #393E46;
+  --action: #00ADB5;
+  --highlight: #F8B500;
+  --lighter: #777;
+  --error: #FC3C3C;
+}
+
+
+body {
+  font-size: 18px;
+  line-height: 150%;
+  font-family: 'Libre Franklin', sans-serif;
+}
+
+h1, h2, h3 {
+  font-family: 'Libre Baskerville', serif;
+  font-weight: 300;
+  color: #000;
+}
+
+
+button {
+  border: 1px dotted var(--dark);
+  font-size: 1.8rem;
+  background: none;
+  cursor: pointer;
+  margin-right: 8px;
+}
+button:hover {
+  box-shadow: -4px 4px;
+  border: 1px solid var(--dark);
+  transition: ease;
+  transition-duration: 0.1s;
+  margin-bottom: 4px;
+  margin-top: -4px;
+}
+
+
+.loading button {
+  border: 1px solid var(--dark);
+  box-shadow: -4px 4px;
+  transition: ease;
+  transition-duration: 0.1s;
+  margin-bottom: 4px;
+  margin-top: -4px;
+}
+
+.loading {
+  animation: flash ease 0.1s ;
+  background-color: var(--lighter);
+}
+
+
+.tile {
+  padding: 15px;
+  margin: 15px;
+  box-shadow: 9px 9px var(--dark);
+  border: 3px solid var(--dark);
+  margin-bottom: 30px;
+  overflow: hidden;
+  align-items: baseline;
+}
+.tile__actions {
+  height: 45px;
+}
+
+nav h1 {
+  display: inline;
+  font-size: 3.2rem;
+  color: var(--lighter);
+}
+nav {
+  margin: 24px 0;
+}
+nav a {
+  padding: 0 4px;
+  margin: 0 4px;
+}
+a, a:visited, a:visited {
+  color: var(--action);
+}
+
+a:hover {
+  color: var(--highlight);
+}
+
+a.active {
+  background-color: var(--dark);
+  color: var(--highlight);
+}
+
+.error {
+  background-color: var(--error);
+  border-radius: 3px;
+  display: block;
+}
+
+/* App specific styling */
+textarea {
+  width:100%;
+  height: 100%;
+  resize: none;
+  outline: none;
+  padding: 10px;
+  margin: -10px;
+  border: none;
+}
+
+.textarea-container {
+  height: 60vh;
+  padding: 10px;
+  border: 1px dashed solid var(--dark);
+}
+
+.graph-view-container {
+  width: 100%;
+  height: calc(100vh - 95px);
+  display: block;
+  z-index: 50;
+}
+
+.anchor-top-right {
+  position: absolute;
+  right: 0;
+  width: 200px;
+  top: 0;
+}
+
+.graph-information {
+  background: white;
+  font-size: 0.8rem;
+  line-height: 0.9rem;
+  z-index: 100;
+}
+.graph-node-dialog {
+  background: white;
+  z-index: 100;
+  position: absolute;
+  left: 0;
+  top: 95px;
+  width: 400px;
+}
