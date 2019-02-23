@@ -9,7 +9,10 @@ class RegistrationFlow extends React.Component<IRegistrationProps, any, any> {
         return <div className="tile">
             <h1>Register or Login to view App</h1>
             <p>
-                decisions.ersin.nz is an application for visualizing decision tree's. The current example will create a 
+                This site is an application for visualizing decision tree's. The current example uses the <a href="https://www.pncc.govt.nz/media/3130946/signs-and-use-of-public-places-bylaw-2015-amended-2018.pdf">Palmerston North signs and use of public places bylaw</a>.
+            </p>
+            <p>
+                Feel free to fork this on github from the <a href="https://github.com/ebuckley/decision-tree-ui">Decision Tree UI</a> repo.
             </p>
             <div className="tile__actions">
                 <button onClick={this.props.onGoogleLogin}>Login with Google</button>
